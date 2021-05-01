@@ -8,20 +8,17 @@ import firebase from './util/firebase.js';
 import "firebase/database";
 
 export default function App() {
-    const [temp, setTemp] = useState();
-    const [heart, setHeart] = useState();
-    const [spo2, setSpo2] = useState();
+    const [temp, setTemp] = useState(0);
+    const [heart, setHeart] = useState(0);
+    const [spo2, setSpo2] = useState(0);
 
     useEffect(() => {
-        const interval = setInterval(() => {
-            const sensorRef = firebase.database().ref("Sensor");
-            sensorRef.on('value', (snapshot) => {
-                setTemp(snapshot.val().temp)
-                setHeart(snapshot.val().heart);
-                setSpo2(snapshot.val().spo2);
-            })
-        }, 1000);
-        return () => clearInterval(interval);
+        const soldierRef = firebase.database().ref("Soldier");
+        soldierRef.on('value', (snapshot) => {
+            setTemp(snapshot.val().temp);
+            setHeart(snapshot.val().hr);
+            setSpo2(snapshot.val().spo2);
+        })
     });
 
     return (
