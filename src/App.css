@@ -1,0 +1,19 @@
+.container {
+  text-align: center;
+  display: flex;
+  color: #767676;
+  padding: 2rem 10rem;
+  flex-direction: row;
+}
+
+.data {
+  flex-direction: column;
+  display: flex;
+  margin: 8rem 0 0 15rem;
+}
+
+.value {
+  flex-direction: row;
+  display: flex;
+  padding: 1rem;
+}
